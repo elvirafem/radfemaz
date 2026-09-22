@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qırmızı Xətt — Məqalə</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__top">
+    <span>Buraxılış — 01</span>
+    <span>Azərbaycan, 2026</span>
+  </div>
+  <a href="index.html" class="masthead__title">QIRMIZI XƏTT</a>
+  <p class="masthead__tagline">Radikal Feminist Nəşr və Təşkilatlanma</p>
+  <nav class="primary" aria-label="Əsas naviqasiya">
+    <a href="index.html">Ana Səhifə</a>
+    <a href="about.html">Haqqımızda</a>
+    <a href="articles.html" aria-current="page">Məqalələr</a>
+    <a href="contact.html">Əlaqə</a>
+  </nav>
+</header>
+
+<div class="torn" role="presentation"></div>
+
+<main>
+  <a class="back-link" href="articles.html">← Bütün məqalələr</a>
+
+  <div id="not-found" style="display:none">
+    <p class="eyebrow">Xəta</p>
+    <h1 class="page-title">Məqalə tapılmadı</h1>
+  </div>
+
+  <article class="prose" id="article-wrap" style="display:none">
+    <p class="eyebrow" id="article-eyebrow">Məqalə</p>
+    <h1 class="page-title" id="article-title"></h1>
+    <div id="article-body"></div>
+  </article>
+
+  <section class="comments" id="comments-section" style="display:none">
+    <p class="eyebrow">Şərhlər</p>
+    <p class="comments-note">
+      Şərh yazarkən istənilən ad seçə bilərsiniz — qeydiyyat və ya giriş tələb olunmur.
+    </p>
+    <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="SIZIN-APP-ID-BURAYA"></div>
+  </section>
+</main>
+
+<div class="torn torn--garnet" role="presentation"></div>
+
+<footer>
+  <span>© 2026 Qırmızı Xətt</span>
+  <span>Mətnlər izahsız istifadə üçün açıqdır</span>
+</footer>
+
+<script src="site.js"></script>
+<script src="data/articles.js"></script>
+<script>
+function loadArticle() {
+  const slug = new URLSearchParams(location.search).get('slug');
+  const data = slug ? ARTICLES.find(a => a.slug === slug) : null;
+
+  if (!data) {
+    document.getElementById('not-found').style.display = 'block';
+    return;
+  }
+
+  document.title = `${data.title} — Qırmızı Xətt`;
+  document.getElementById('article-title').textContent = data.title;
+  document.getElementById('article-body').innerHTML = renderContent(data.content);
+  document.getElementById('article-wrap').style.display = 'block';
+
+  const thread = document.getElementById('cusdis_thread');
+  thread.setAttribute('data-page-id', 'article-' + slug);
+  thread.setAttribute('data-page-url', location.href);
+  thread.setAttribute('data-page-title', data.title);
+  document.getElementById('comments-section').style.display = 'block';
+
+  const script = document.createElement('script');
+  script.src = 'https://cusdis.com/js/cusdis.es.js';
+  script.async = true;
+  script.defer = true;
+  document.body.appendChild(script);
+}
+
+loadArticle();
+</script>
+
+</body>
+</html>
