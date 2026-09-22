@@ -9,11 +9,6 @@ Admin panel yoxdur. Yeni məqalə əlavə etmək üçün `data/articles.js` fayl
 siyahısına yeni obyekt əlavə edin (fayldakı nümunələrə baxın). `slug` sahəsi unikal olmalı və
 URL-də istifadə olunacaq (yalnız hərf, rəqəm, tire).
 
-## Şərhlər
-
-`article.html` [Cusdis](https://cusdis.com)-a qoşulub (pulsuz, açıq mənbəli, qeydiyyat tələb
-etmir). İstifadə etmək üçün `article.html` içindəki `data-app-id="SIZIN-APP-ID-BURAYA"` sətrini
-öz Cusdis app ID-nizlə əvəz edin.
 
 ## Struktur
 
