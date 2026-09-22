@@ -10,13 +10,6 @@ mühitlərində həmrəylik qurmağa təşviq etməkdir. Sayt struktur tənqid v
 Statik sayt, server və verilənlər bazası yoxdur — bütün fayllar birbaşa istənilən statik hosting
 (GitHub Pages, Netlify, Cloudflare Pages və s.) üzərində işə düşür.
 
-## Məqalə əlavə etmək
-
-Admin panel yoxdur. Yeni məqalə əlavə etmək üçün `data/articles.js` faylını açıb `ARTICLES`
-siyahısına yeni obyekt əlavə edin (fayldakı nümunələrə baxın). `slug` sahəsi unikal olmalı və
-URL-də istifadə olunacaq (yalnız hərf, rəqəm, tire).
-
-
 ## Struktur
 
 - `index.html`, `about.html`, `articles.html`, `article.html`, `contact.html` — səhifələr
